@@ -3,6 +3,7 @@
 import { Box, BoxRow } from "@/types";
 import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import _ from "lodash";
 
 export interface EditorContext {
 	boxes: BoxRow[];
@@ -40,7 +41,7 @@ export const EditorContextProvider = ({ children }) => {
 			boxes.map((row) =>
 				row.map((box) => {
 					if (box.id !== id) return box;
-					box = { ...box, ...newData };
+					box = _.merge(box, newData);
 					return box;
 				})
 			)

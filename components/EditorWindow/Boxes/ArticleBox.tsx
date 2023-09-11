@@ -84,7 +84,7 @@ function ArticleBox({ deleted, full, box, rowIndex }: BoxProps) {
 									transition: "font-size .15s",
 								}}
 							>
-								{box.article?.title}
+								{box.article?.editedTitle || box.article?.title}
 							</p>
 						</div>
 					</div>
