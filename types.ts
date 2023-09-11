@@ -8,5 +8,8 @@ export interface Box {
 	deleted?: boolean;
 	fontSize: number;
 	imageHeight: number;
+	zoom: number;
+	imageYPosition: number;
+	imageXPosition: number;
 }
 export type BoxRow = Box[];

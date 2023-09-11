@@ -18,28 +18,22 @@ export const EditorContext = createContext<EditorContext | null>(null);
 const getNewRow = (width1 = 16, width2 = 16) => {
 	const id1 = uuidv4();
 	const id2 = uuidv4();
-	return [
-		{
-			id: id1,
-			width: width1,
-			gridColumnStart: 1,
-			gridColumnEnd: 17,
-			fontSize: 1,
-			imageHeight: 0.5625,
-		},
-		{
-			id: id2,
-			width: width2,
-			gridColumnStart: 17,
-			gridColumnEnd: 33,
-			fontSize: 1,
-			imageHeight: 0.5625,
-		},
-	];
+	const box = (id: string, width: number,gridColumnStart: number,gridColumnEnd: number) => ({
+		id: id,
+		width: width,
+		gridColumnStart: gridColumnStart,
+		gridColumnEnd: gridColumnEnd,
+		fontSize: 1,
+		imageHeight: 0.5625,
+		zoom: 1,
+		imageYPosition: 0,
+		imageXPosition: 0,
+	});
+	return [box(id1, width1,1,17), box(id2, width2,17,33)];
 };
 
 export const EditorContextProvider = ({ children }) => {
-	const [boxes, setBoxes] = useState([getNewRow()]);
+	const [boxes, setBoxes] = useState([]);
 	const [selectedBox, setSelectedBox] = useState(null);
 	const editBox = (id: string, newData: any) => {
 		setBoxes((boxes) =>

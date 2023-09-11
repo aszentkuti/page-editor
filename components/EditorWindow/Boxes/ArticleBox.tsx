@@ -28,12 +28,13 @@ function ArticleBox({ deleted, full, box, rowIndex }: BoxProps) {
 				}}
 				onClick={() => setSelectedBox(box)}
 				style={{
+					userSelect: "none",
 					cursor: "pointer",
 					borderRadius: "5px",
 					minHeight: "250px",
 					gridColumnStart: full ? 1 : box.gridColumnStart,
 					gridColumnEnd: full ? 33 : box.gridColumnEnd,
-					gridRow: rowIndex,
+					gridRow: 1,
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",
@@ -53,6 +54,7 @@ function ArticleBox({ deleted, full, box, rowIndex }: BoxProps) {
 							style={{
 								height: "100%",
 								overflow: "hidden",
+								transition: "aspect-ratio .15s",
 								aspectRatio: `1/${box.imageHeight}`,
 							}}
 						>
@@ -62,6 +64,11 @@ function ArticleBox({ deleted, full, box, rowIndex }: BoxProps) {
 									maxWidth: "100%",
 									height: "100%",
 									objectFit: "cover",
+									transition: "all .15s,",
+									transform: `scale(${box.zoom || 1})`,
+									objectPosition: `${
+										box.imageXPosition || 0
+									}px ${box.imageYPosition || 0}px`,
 								}}
 								src={box.article?.enclosures?.url}
 								alt={box.article?.title}
@@ -71,8 +78,10 @@ function ArticleBox({ deleted, full, box, rowIndex }: BoxProps) {
 							<p
 								style={{
 									marginTop: "8px",
+									marginBottom: 0,
 									fontSize: `${box?.fontSize || 1}rem`,
 									overflowWrap: "anywhere",
+									transition: "font-size .15s",
 								}}
 							>
 								{box.article?.title}
