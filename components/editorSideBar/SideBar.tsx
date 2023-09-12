@@ -176,6 +176,7 @@ function SideBar({ articles }) {
 											<TextField
 												multiline
 												sx={{ width: "100%" }}
+												defaultValue={selectedBox.article.title}
 												value={
 													selectedBox.article.editedTitle
 												}

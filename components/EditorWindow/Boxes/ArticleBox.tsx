@@ -64,7 +64,7 @@ function ArticleBox({ deleted, full, box, rowIndex }: BoxProps) {
 									maxWidth: "100%",
 									height: "100%",
 									objectFit: "cover",
-									transition: "all .15s,",
+									transition: "all .15s",
 									transform: `scale(${box.zoom || 1})`,
 									objectPosition: `${
 										box.imageXPosition || 0
